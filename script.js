@@ -37,6 +37,7 @@ function buildHtmlContent() {
         </head>
         <body>
           Tickets Content Printing
+          <img src="img.jpg"/>
         </body>
       </html>
     `;
