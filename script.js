@@ -1,15 +1,5 @@
-function buildIframeContent(ticketsContentHtml) {
-    const iframe = document.createElement('iframe');
-    iframe.style.position = 'absolute';
-    iframe.style.width = '0';
-    iframe.style.height = '0';
-    iframe.style.border = 'none';
-
-    document.body.appendChild(iframe);
-
-    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    iframeDocument.open();
-    iframeDocument.write(`
+function buildHtmlContent() {
+    return `
       <html>
         <head>
           <title>Tickets</title>
@@ -49,7 +39,21 @@ function buildIframeContent(ticketsContentHtml) {
           Tickets Content Printing
         </body>
       </html>
-    `);
+    `;
+}
+
+function buildIframeContent(ticketsContentHtml) {
+    const iframe = document.createElement('iframe');
+    iframe.style.position = 'absolute';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = 'none';
+
+    document.body.appendChild(iframe);
+
+    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+    iframeDocument.open();
+    iframeDocument.write(buildHtmlContent());
     iframeDocument.close();
 
     return iframe;
@@ -60,10 +64,11 @@ function printTickets() {
     const iframeContent = iframe.current.contentWindow.document;
     const newWindow = window.open('', '_blank');
 
-    newWindow.document.write(iframeContent.documentElement.outerHTML); // Write iframe content
+    newWindow.document.write(buildHtmlContent()); // Write iframe content
     newWindow.document.close(); // Close the document to complete writing
     newWindow.focus(); // Focus on the new window
     newWindow.print();
+    newWindow.close();
 }
 
 const button = document.getElementById('print');
