@@ -61,7 +61,7 @@ function buildIframeContent(ticketsContentHtml) {
 
 function printTickets() {
     const iframe = buildIframeContent();
-    const iframeContent = iframe.current.contentWindow.document;
+    // const iframeContent = iframe.current.contentWindow.document;
     const newWindow = window.open('', '_blank');
 
     newWindow.document.write(buildHtmlContent()); // Write iframe content
