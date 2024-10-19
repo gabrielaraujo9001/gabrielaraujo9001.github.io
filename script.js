@@ -12,7 +12,7 @@ function buildIframeContent(ticketsContentHtml) {
     iframeDocument.write(`
       <html>
         <head>
-          <title>Tickets | Vulcan</title>
+          <title>Tickets</title>
           <style>
             body,
             html {
@@ -57,13 +57,13 @@ function buildIframeContent(ticketsContentHtml) {
 
 function printTickets() {
     const iframe = buildIframeContent();
+    const iframeContent = iframe.current.contentWindow.document;
+    const newWindow = window.open('', '_blank');
 
-    iframe.onload = () => {
-        iframe.contentWindow.focus();
-        iframe.contentWindow.print();
-        document.body.removeChild(iframe);
-        window.focus();
-    };
+    newWindow.document.write(iframeContent.documentElement.outerHTML); // Write iframe content
+    newWindow.document.close(); // Close the document to complete writing
+    newWindow.focus(); // Focus on the new window
+    newWindow.print();
 }
 
 const button = document.getElementById('print');
