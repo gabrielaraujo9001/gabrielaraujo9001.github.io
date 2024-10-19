@@ -61,14 +61,12 @@ function buildIframeContent(ticketsContentHtml) {
 
 function printTickets() {
     const iframe = buildIframeContent();
-    // const iframeContent = iframe.current.contentWindow.document;
-    const newWindow = window.open('', '_blank');
-
-    newWindow.document.write(buildHtmlContent()); // Write iframe content
-    newWindow.document.close(); // Close the document to complete writing
-    newWindow.focus(); // Focus on the new window
-    newWindow.print();
-    newWindow.close();
+    iframe.onload = () => {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+        document.body.removeChild(iframe);
+        window.focus();
+    };
 }
 
 const button = document.getElementById('print');
