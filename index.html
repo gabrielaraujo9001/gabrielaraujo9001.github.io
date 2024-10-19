@@ -6,32 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .for-printing {
+            display: none;
+        }
+        
         @media print {
             @page {
                 margin: 0;
                 size: auto;
             }
 
-            body * {
-                visibility: hidden;
+            #root {
+                display: none;
             }
 
-            iframe {
-                visibility: visible;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
+            .for-printing {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
-    <h1>Print Test</h1>
-    <button type="button" id="print">Print PDF</button>
-    <p>Version: 0.0.5</p>
+    <div id="root">
+        <h1>Print Test</h1>
+        <button type="button" id="print">Print PDF</button>
+        <p>Version: 0.0.6</p>
+    </div>
+    <div class="for-printing">
+        Tickets Content Printing
+        <img src="img.jpg" alt="img">
+    </div>
     <script src="script.js"></script>
 </body>
 

@@ -61,13 +61,14 @@ function buildIframeContent(ticketsContentHtml) {
 }
 
 function printTickets() {
-    const iframe = buildIframeContent();
-    iframe.onload = () => {
-        iframe.contentWindow.focus();
-        iframe.contentWindow.print();
-        document.body.removeChild(iframe);
-        window.focus();
-    };
+    // const iframe = buildIframeContent();
+    // iframe.onload = () => {
+    //     iframe.contentWindow.focus();
+    //     iframe.contentWindow.print();
+    //     document.body.removeChild(iframe);
+    //     window.focus();
+    // };
+    window.print();
 }
 
 const button = document.getElementById('print');
