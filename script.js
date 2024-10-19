@@ -45,10 +45,10 @@ function buildHtmlContent() {
 
 function buildIframeContent(ticketsContentHtml) {
     const iframe = document.createElement('iframe');
-    iframe.style.position = 'absolute';
-    iframe.style.width = '0';
-    iframe.style.height = '0';
-    iframe.style.border = 'none';
+    // iframe.style.position = 'absolute';
+    // iframe.style.width = '0';
+    // iframe.style.height = '0';
+    // iframe.style.border = 'none';
 
     document.body.appendChild(iframe);
 
